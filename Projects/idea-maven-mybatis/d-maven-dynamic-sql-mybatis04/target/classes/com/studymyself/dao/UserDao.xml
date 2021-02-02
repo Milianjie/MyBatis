@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.studymyself.dao.UserDao">
+
+
+    <select id="selectByIf" resultType="User">
+        select id,loginName,loginPwd,realName from t_user
+        where
+        <!--上面表示主语句-->
+        <!--if表示这个标签中传递过来的Java对象的id字段值大于0
+            就将if标签中的sql语句块拼接到主语句末端中去-->
+        <if test="id > 0">
+             id=#{id}
+        </if>
+        <!--传过来的java对象中的realName值不为空或不是空字符串
+            就将if标签中的sql语句块拼接到主语句末端中去-->
+            <if test="realName!= null or realName !='' ">
+            or realName = #{realName}
+        </if>
+    </select>
+
+    <select id="selectByWhere" resultType="User">
+        select id,loginName,loginPwd,realName from t_user
+        <where>
+            <if test="id > 0">
+                or id=#{id}
+            </if>
+            <if test="realName!= null and realName !='' ">
+                or realName = #{realName}
+            </if>
+        </where>
+
+    </select>
+
+    <select id="selectByForeach" resultType="User">
+        select id,loginName,loginPwd,realName from t_user where id in
+        <foreach collection="list" item="id" open="(" close=")" separator=",">
+            #{id}
+        </foreach>
+    </select>
+
+    <select id="selectForPageHelper" resultType="User">
+        select id,loginName,loginPwd,realName from t_user
+    </select>
+
+</mapper>

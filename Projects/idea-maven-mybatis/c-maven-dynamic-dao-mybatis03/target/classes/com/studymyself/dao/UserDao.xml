@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+        <!--命名空间属性：里面的值是dao接口的全限定名，虽然可以自定义字符串，但不能这样用-->
+        <!--作用是区分有多个sql映射文件时，下面sql语句的唯一标识id可能重复，
+            这时就用接口全限定名.id 来区别执行哪个映射文件的同id的sql语句了
+            com.studymyself.dao.UserDao.getAll
+        -->
+<mapper namespace="com.studymyself.dao.UserDao">
+
+    <!--id中的值是这条sql语句在本映射文件中的唯一标识
+        而com.studymyself.dao.UserDao.getAll是这条sql语句在本项目中的唯一标识
+    -->
+    <select id="getAll" resultType="com.studymyself.entity.User">
+        select
+            id,loginName,loginPwd,realName
+        from
+            t_user
+    </select>
+
+    <select id="selectById" resultType="User">
+        select
+            *
+        from
+            t_user
+        where
+            id=${id}
+    </select>
+
+    <!--下面需要传参数，但是我们并没有设置parameterType属性却仍然可以执行添加数据的操作
+        原因是namespace属性绑定的UserDao接口中添加数据的方法addUser需要的参数是User对象
+        本句sql语句的id和接口中的方法名一致，所以下面占位符中传的值就是接口方法中传递
+        的User对象中的值，也就不在多余设置parameterType属性为User类了
+    -->
+    <insert id="addUser">
+        insert into t_user
+            (loginName,loginPwd,realName)
+        values
+            (#{loginName},#{loginPwd},#{realName})
+    </insert>
+
+</mapper>

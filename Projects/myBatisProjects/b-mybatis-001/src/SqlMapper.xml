@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--这里先不要管namespace的值，随便写-->
+<mapper namespace="asssdd">
+    <!--编写查询语句，查询所有用户信息-->
+    <!--id的值代表的是下面是一条sql语句，具有唯一性，id的值要拷贝到java程序中，尽量不要自己写，避免写错-->
+    <!--我们得告诉mybatis框架需要自动创建什么java对象封装查询出的数据以及自动将查询的结果集放到java对象的对应属性上-->
+    <!--resultType的值就是让mybatis自动创建的对象的完整类名-->
+    <!--让mybatis框架自动将查询的结果集放到java对象的对应属性上，要保证查询出的结果的展示字段与Java对象中属性字段一致，
+    如果Java对象的字段名和数据库表中中的字段名不一致，查询sql语句需要起别名为Java对象中的对应字段名，
+    若没有起别名，也就没法将查询结果集放到Java对象中，该对象的属性字段就为null-->
+    <select id="getAll" resultType="com.mybatis.entity.User">
+    select
+        id as userid,loginName as username,loginPwd as password
+    from
+        t_user
+  </select>
+</mapper>

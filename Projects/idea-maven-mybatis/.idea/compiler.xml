@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="a-maven-mybatis01" />
+        <module name="d-maven-dynamic-sql-mybatis04" />
+        <module name="b-maven-dao-mybatis02" />
+        <module name="c-maven-dynamic-dao-mybatis03" />
+        <module name="b-maven-mybatis02 (1)" />
+        <module name="b-maven-mybatis02" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="a-maven-mybatis01" target="1.8" />
+      <module name="a-maven-mybatis01 (1)" target="1.8" />
+      <module name="b-maven-dao-mybatis02" target="1.8" />
+      <module name="b-maven-mybatis02" target="1.8" />
+      <module name="b-maven-mybatis02 (1)" target="1.8" />
+      <module name="c-maven-dynamic-dao-mybatis03" target="1.8" />
+      <module name="d-maven-dynamic-sql-mybatis04" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

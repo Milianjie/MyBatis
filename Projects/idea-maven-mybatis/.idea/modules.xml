@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/a-maven-mybatis01/a-maven-mybatis01.iml" filepath="$PROJECT_DIR$/a-maven-mybatis01/a-maven-mybatis01.iml" />
+      <module fileurl="file://$PROJECT_DIR$/b-maven-dao-mybatis02/b-maven-mybatis02.iml" filepath="$PROJECT_DIR$/b-maven-dao-mybatis02/b-maven-mybatis02.iml" />
+      <module fileurl="file://$PROJECT_DIR$/c-maven-dynamic-dao-mybatis03/b-maven-mybatis02 (1).iml" filepath="$PROJECT_DIR$/c-maven-dynamic-dao-mybatis03/b-maven-mybatis02 (1).iml" />
+      <module fileurl="file://$PROJECT_DIR$/d-maven-dynamic-sql-mybatis04/d-maven-dynamic-sql-mybatis04.iml" filepath="$PROJECT_DIR$/d-maven-dynamic-sql-mybatis04/d-maven-dynamic-sql-mybatis04.iml" />
+    </modules>
+  </component>
+</project>

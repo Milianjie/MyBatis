@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/a-jdbc-test/a-jdbc-test.iml" filepath="$PROJECT_DIR$/a-jdbc-test/a-jdbc-test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/b-mybatis-001/b-mybatis-001.iml" filepath="$PROJECT_DIR$/b-mybatis-001/b-mybatis-001.iml" />
+      <module fileurl="file://$PROJECT_DIR$/c-mybatis-crud/c-mybatis-crud.iml" filepath="$PROJECT_DIR$/c-mybatis-crud/c-mybatis-crud.iml" />
+      <module fileurl="file://$PROJECT_DIR$/d-mybatis-parameterType-map/d-mybatis-parameterType-map.iml" filepath="$PROJECT_DIR$/d-mybatis-parameterType-map/d-mybatis-parameterType-map.iml" />
+      <module fileurl="file://$PROJECT_DIR$/e-mybatis-resultType-map/e-mybatis-resultType-map.iml" filepath="$PROJECT_DIR$/e-mybatis-resultType-map/e-mybatis-resultType-map.iml" />
+    </modules>
+  </component>
+</project>

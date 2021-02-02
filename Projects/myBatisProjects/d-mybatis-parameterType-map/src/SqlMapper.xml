@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="test">
+
+    <!--使用Map集合给sql语句传值，占位符中的字段名要和Map集合中的key属性名一致-->
+    <!--所以我们给Map集合中添加数据时key属性名一般与表中的字段名一致，javabean传值也一样-->
+    <!--
+    下面四种种写法都可以
+    <insert id="save" parameterType="java.util.Map">
+    <insert id="save" parameterType="java.util.HashMap">
+    <insert id="save" parameterType="map">
+    -->
+    <insert id="save" parameterType="Map">
+        insert into t_user
+            (loginName,loginPwd,realName)
+        values
+            (#{loginName},#{loginPwd},#{realName})
+    </insert>
+
+
+</mapper>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="test">
+    <!--将查询的数据用简单类型封装保存-->
+    <select id="getAllName" resultType="String">
+        select
+            ename
+        from
+            emp
+    </select>
+    
+    <select id="getByEname" resultType="Map">
+        <!--封装查询数据到Map集合中是以查询结果的列名为key，而列名是可以起别名的-->
+        select
+            e.ename,e.sal,d.dname
+        from
+            emp e
+        join
+           dept d
+        on
+            e.deptno = d.deptno
+        where
+            e.ename = #{ename}
+    </select>
+    
+    <select id="getNameAndDptByJob" resultType="Map">
+        select
+            e.ename,d.dname
+        from
+            emp e
+        join
+           dept d
+        on
+            e.deptno = d.deptno
+        where
+            e.job = #{job}
+    </select>
+</mapper>

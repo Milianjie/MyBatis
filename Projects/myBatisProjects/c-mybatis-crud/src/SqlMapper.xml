@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="test">
+    <!--
+        注意：parameterType属性是给sql语句中占位符传值的，定义占位符传什么类型对象的属性的值到该位置上
+        翻译为：参数类型，下面insert语句中传递的是com.mybatis.domain.User类的属性字段值
+        同时javabean在给占位符传值时，程序员要告诉mybatis应该将javabean的哪个属性字段值传到哪个占位符上
+        所以占位符中需要有javabean的属性字段名
+        mybatis中占位符不用问号表示，因为要放javabean的字段信息，所以用：#{这里写javabean的属性字段名} 表示
+        #{loginName}底层原理是mybatis会将#{}中的属性字段名获取到，将其首字母大写，然后在前面添加get，调用javabean中的各字段
+        的get方法来获取到值，从而组成sql语句执行
+    -->
+    <!--定义resultMap
+         id自己定义，代表你定义的这个resultMap
+         type：填对应Java类型的全限定名-->
+    <resultMap id="user" type="com.mybatis.domain.User">
+        <!--对主键结果列映射的设置
+            使用id标签
+            column：填查询结果的列名
+            property：Java类型的属性名
+            -->
+        <id column="id" property="id"/>
+        <!--非主键列
+            使用result标签-->
+        <result column="loginName" property="account"/>
+        <result column="loginPwd" property="password"/>
+        <result column="realName" property="name"/>
+
+    </resultMap>
+
+    <!--使用上面设置的映射关系，直接将某个resultMap的id放进resultType属性中-->
+    <insert id="save" parameterType="com.mybatis.domain.User">
+        insert into t_user
+            (loginName,loginPwd,realName)
+        values
+            (#{loginName},#{loginPwd},#{realName})
+    </insert>
+
+    <!--能复制的就复制，不要自己将属性名敲上去，以防敲错-->
+    <update id="update" parameterType="com.mybatis.domain.User">
+        update t_user set
+            loginPwd = #{loginPwd},realName = #{realName}
+        where
+            id = #{id}
+    </update>
+
+    <!--resultType属性是查询结果集类型，我们发现insert和update标签是没有resultType属性的，只有在select标签中才有-->
+    <!--parameterType这个属性是专门负责给sql语句传值的-->
+    <!--当传值的参数类型标签中的数据类型是"简单类型"时，该属性可以省略
+        即   parameterType="简单类型"  可省略
+        但是
+             resultType="简单类型"  是不能省略的
+        "简单类型"：17种
+        byte short int long float double boolean char
+        Byte Short Integer Long Float Double Boolean Character
+        String
+        由于这里根据id查询一条记录，传入一个int类型的id，自动封装成Integer类型，可省略
+        而且只传入一个参数，#{}中的名字可任意编写
+    -->
+    <!--<select id="selectOne" parameterType="java.lang.Integer" resultType="com.mybatis.domain.User">-->
+    <select id="getById"  resultType="com.mybatis.domain.User">
+        select
+            id,loginName,loginPwd,realName
+        from
+            t_user
+        where
+            id = #{id}
+    </select>
+
+    <select id="getAll" resultType="com.mybatis.domain.User">
+        select
+            *
+        from
+            t_user
+    </select>
+
+    <delete id="deleteById">
+        delete from t_user
+        where
+        id=#{id}
+    </delete>
+</mapper>
