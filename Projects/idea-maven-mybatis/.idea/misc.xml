@@ -7,8 +7,8 @@
         <option value="$PROJECT_DIR$/b-maven-mybatis02/pom.xml" />
         <option value="$PROJECT_DIR$/c-maven-mybatis03/pom.xml" />
         <option value="$PROJECT_DIR$/d-maven-dynamic-sql-mybatis04/pom.xml" />
-        <option value="$PROJECT_DIR$/b-maven-dao-mybatis02/pom.xml" />
         <option value="$PROJECT_DIR$/c-maven-dynamic-dao-mybatis03/pom.xml" />
+        <option value="$PROJECT_DIR$/b-maven-dao-mybatis02/pom.xml" />
       </list>
     </option>
   </component>
