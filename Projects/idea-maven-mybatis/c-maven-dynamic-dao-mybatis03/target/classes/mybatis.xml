@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+
+    <!--注意这些属性设置从上往下是有顺序的，写反就会报错-->
+
+    <!--配置属性资源文件-->
+    <properties resource="jdbc.properties"/>
+
+    <!--该属性的作用：控制mybatis全局行为,
+        顺序要在上面的properties属性下面-->
+    <settings>
+        <!--设置mybatis输出日志-->
+        <setting name="logImpl" value="STDOUT_LOGGING"/>
+    </settings>
+
+    <!--给这个包下的所有类起别名-->
+    <typeAliases>
+        <package name="com.studymyself.entity"/>
+    </typeAliases>
+
+    <!--environments是环境配置，是复数说明下面可以配置多个环境
+        所以default属性的值表示这个配置文件用下面的哪一套数据库配置信息
+        这里使用development1
+    -->
+    <environments default="development1">
+        <!--第一套数据库连接信息配置，唯一标识id叫development-->
+        <environment id="development1">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="${jdbc.driver}"/>
+                <property name="url" value="${jdbc.url}"/>
+                <property name="username" value="${jdbc.username}"/>
+                <property name="password" value="${jdbc.password}"/>
+            </dataSource>
+        </environment>
+        <!--第二套数据库连接信息配置，唯一标识id叫development-->
+        <environment id="development2">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="${jdbc.driver}"/>
+                <property name="url" value="${jdbc.url}"/>
+                <property name="username" value="${jdbc.username}"/>
+                <property name="password" value="${jdbc.password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <mappers>
+        <!--这里也可以添加多个sql映射文件，因为项目中不止一个表
+            这就是映射文件中namespace属性的作用了-->
+        <!-- <mapper resource="StudentDao.xml"/>-->
+        <mapper resource="com/studymyself/dao/UserDao.xml"/>
+    </mappers>
+</configuration>
